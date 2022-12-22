@@ -24,13 +24,13 @@ public class PlayerAction : MonoBehaviour
     void Update()
     {
         Move();
+        Interaction();
     }
 
     private void FixedUpdate()
     {
         rigid.velocity = new Vector2(h, v) * speed;
         Investigation();
-        interaction();
     }
 
     void Move()
@@ -42,7 +42,6 @@ public class PlayerAction : MonoBehaviour
         bool vUp = Input.GetButtonUp("Vertical");
         h = Input.GetAxisRaw("Horizontal");
         v = Input.GetAxisRaw("Vertical");
-        
         //Direction
         if (vDown && v == 1)
             dirVec = Vector3.up;
@@ -53,12 +52,13 @@ public class PlayerAction : MonoBehaviour
         else if (hDown && h == -1)
             dirVec = Vector3.left;
 
+
     }
 
     void Investigation()
     {
-        //Debug.DrawRay(rigid.position, dirVec * 0.7f, new Color(0, 1, 0));
-        RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, dirVec, 0.7f, LayerMask.GetMask("Obejct"));
+        Debug.DrawRay(rigid.position, dirVec * 0.7f, new Color(0, 1, 0));
+        RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, dirVec, 0.7f, LayerMask.GetMask("Object"));
 
         if (rayHit.collider != null)
         {
@@ -69,9 +69,9 @@ public class PlayerAction : MonoBehaviour
     }
 
     //상호작용
-    void interaction()
+    void Interaction()
     {
-        if (Input.GetButtonDown("Jump") && scanObj !=null)
+        if (Input.GetKeyDown(KeyCode.F) && scanObj !=null)
         {
             Debug.Log("This is " + scanObj.name);
         }
