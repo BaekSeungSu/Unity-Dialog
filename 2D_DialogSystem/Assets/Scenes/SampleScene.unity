@@ -1346,7 +1346,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &226620999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1461,6 +1461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  gameManager: {fileID: 1160707659}
 --- !u!61 &388487727
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2722,6 +2723,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1a46ac732527054e848c722adaeb504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  talkPanel: {fileID: 226620998}
+  talkText: {fileID: 1127512441}
+  scanObject: {fileID: 0}
+  isAction: 0
 --- !u!4 &1160707660
 Transform:
   m_ObjectHideFlags: 0

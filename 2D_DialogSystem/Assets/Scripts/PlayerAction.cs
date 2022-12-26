@@ -7,6 +7,8 @@ public class PlayerAction : MonoBehaviour
     [SerializeField]
     private float speed;
 
+    public GameManager gameManager;
+
     float h;
     float v;
     Rigidbody2D rigid;
@@ -36,12 +38,10 @@ public class PlayerAction : MonoBehaviour
     void Move()
     {
         //Direction Find
-        bool hDown = Input.GetButtonDown("Horizontal");
-        bool vDown = Input.GetButtonDown("Vertical");
-        bool hUp = Input.GetButtonUp("Horizontal");
-        bool vUp = Input.GetButtonUp("Vertical");
-        h = Input.GetAxisRaw("Horizontal");
-        v = Input.GetAxisRaw("Vertical");
+        bool hDown = gameManager.isAction ? false : Input.GetButtonDown("Horizontal");
+        bool vDown = gameManager.isAction ? false : Input.GetButtonDown("Vertical");
+        h = gameManager.isAction ? 0 : Input.GetAxisRaw("Horizontal");
+        v = gameManager.isAction ? 0 : Input.GetAxisRaw("Vertical");
         //Direction
         if (vDown && v == 1)
             dirVec = Vector3.up;
@@ -73,7 +73,7 @@ public class PlayerAction : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && scanObj !=null)
         {
-            Debug.Log("This is " + scanObj.name);
+            gameManager.Action(scanObj);
         }
     }
 }
